@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/Furnish.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    <title>Document</title>
+
+<style>
+    *{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+    }
+    body{
+        background-color: white;
+    }
+    a{
+        text-decoration: none;
+         color:white;
+    }
+    /*Display Styles*/
+    .d-flex{
+        display: flex!important;
+    }
+    .d-none{
+        display:none!important;
+    }
+    .d-block{
+        display: block!important;
+    }
+
+    .Navigation{
+      max-width:100%;
+      max-height:4em;
+      position: sticky;
+      display:flex;
+      background-color: #116711;;
+      padding-left: 2%;
+      padding-right: 2%;
+      padding-top: 1em;
+      top: 0;
+      border-top-right-radius: 7px;
+      border-top-left-radius:7px;
+      z-index: 4;
+     
+     
+    }
+  
+    .icon{
+        margin-left : auto;
+        position: relative;
+        display: inline-block;
+        color:white;
+        width:5rem;
+        
+    }
+    .icon b p{
+        color: white;
+        margin-left: 2em;
+    }
+    
+   
+    .logo-div{
+       
+       display: flex;
+    }
+    .nav-icon{
+       color:white;
+        font-size: xx-large;
+    }
+    .d-none{
+        display: none!important;
+    }
+   
+    .logo{
+        height:3em;
+        width:3em;
+    }
+    /*.logout-icon{
+        background-color: #f0bd00;
+        height:2em;
+        display: flex;
+    }*/
+    .logout{
+        display: none;
+        position:absolute;
+        width:7.6em;
+        height:3em;
+        background-color: #116711; 
+        color:white;
+        border-bottom-left-radius:7px ;
+        border-bottom-right-radius:7px ;
+       
+       
+    }
+    .logout i{
+        color:red;
+       font-size: x-large;
+       
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    .logout i p{
+        display: flex;
+    }
+    .icon:hover .logout{
+        display: block;
+            
+        }
+    
+
+        /*End Of Navigation Styling Code*/
+    .left{
+        display: block;
+        max-width:15rem;
+        max-height:100%;
+        background-color: #116711;;
+        scroll-behavior: smooth;
+        overflow-y: scroll!important;
+        overflow-x: hidden;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 3em;
+        
+        position:fixed;
+        bottom: 0;
+        top:5em;
+        z-index:4;
+       
+        
+    }    
+    .menu-img{
+        width: 1.4rem;
+        display: none;
+     }
+    .left:not(.cancle-tag){
+        padding-top: 3em;
+    }
+
+
+    .left .cancle-tag{
+      margin-left: auto;
+      display: flex;
+      width: 1rem;
+      position: absolute;
+      top: .9em;
+      right: .4em;
+      visibility: hidden;
+    
+
+    }
+    .left  .profile .studentpicture{
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+    }
+    .left::-webkit-scrollbar{
+        background-color: #116711;
+        width:0.5rem;
+        height: 0.5rem;
+        
+       
+        
+    }
+    .left::-webkit-scrollbar-track{
+         margin-block-start:.6em;
+         height:3em;
+    }
+    .left::-webkit-scrollbar-thumb{
+     background-color:white;
+     height: 2%!important;
+     width: 2px;
+     border-radius: 2px;
+     border-top-right-radius: 0%;
+     scrollbar-width: 2px;
+     margin-block-start: 10px;
+
+    }
+    .left::-webkit-scrollbar-thumb:hover{
+        background-color: #f0bd00;
+    }
+ 
+   .studentpicture{
+        width:10em;
+        height:10em;
+        margin-left:  auto;
+        margin-right: auto;
+       
+    }
+    .name{
+        color:white
+    }
+    .active-link{
+       width:100%;
+       height:2em;
+       background-color: green;
+       color:rgb(253, 212, 5);
+       border-radius: 0.2em;
+       margin-bottom: 1em;
+       padding-left:1rem;
+    }
+    .notactive{
+        width:100%;
+        height:2em;
+        
+        color:white;
+        border-radius: 0.2em;
+        padding-left:1rem;
+        transition-duration: .6s;
+    }
+    .notactive:hover{
+        background-color: green;
+        padding-left: 2rem;
+    }
+    /* End OF the Left Div Code*/
+   
+    .content{
+       display: flex;
+    }
+   
+    .button:hover{
+        box-shadow: 2px 2px  green;
+    }
+    .bxs-log-out{
+        color:red;
+        
+    } 
+    .block-content{
+        margin-left: 18rem; 
+        
+        width:100%;
+       
+      
+
+        
+       
+        
+    }
+    .card-info{
+        position: absolute;
+        justify-self:center ;
+        align-self: center;
+        margin-left: 10%;
+        margin-top: 4%;
+        width: 28em!important;
+        height:30em!important;
+        color:black;
+        
+
+        display: block;
+        border-radius:7px;
+        background-color: white;
+        box-shadow:3px 3px 15px;
+        overflow-y: scroll;
+    }
+    .card-info::-webkit-scrollbar{
+        background-color: white;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+    .card-info::-webkit-scrollbar-thumb{
+        background-color: whitesmoke;
+        border-radius: 0.1em;
+       
+    }
+    .card-info::-webkit-scrollbar-thumb:hover{
+        background-color:  rgb(139, 139, 139);
+    }
+
+    .card-name{
+      
+        color:black;
+        display: flex;
+        justify-content: center;
+        
+    }
+    
+    .information{
+        display: flex;
+        color:black;
+        font-size:large;
+        text-transform: uppercase;
+     
+        height:10%;
+
+    }
+    
+   ul{
+       padding-inline-start: 8%;
+    }
+    
+
+    .back-button{
+        width: 100%;
+        position: relative;
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+       }
+       .back-button button{
+        width: 5rem;
+        height: 2rem;
+        background-color: white;
+        border: none;
+        border-radius: .3rem;
+        color: black;
+        box-shadow: 3px 3px 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+       }
+
+
+
+    /* Resposiveness Code*/
+    @media screen and (max-width: 990px) { 
+        .card{
+            width:10rem;
+            height:14rem;
+        }
+        .logout{
+            width:6.95em;
+        }
+        
+        
+    }
+    @media screen and (max-width: 870px) { 
+        .card{
+            width:13rem;
+            height:17rem;
+        }
+        .left{
+            display: none;
+          
+        }
+        .logo{
+            display: none;
+        }
+        .menu-img{
+            display: flex!important;
+        }
+        .cancle-tag{
+            display: flex!important;
+        }
+        .block-content{
+            margin:1rem;
+        }
+        .logout{
+            width:6.75em;
+        }
+        
+    }
+   
+
+    @media screen and (min-width: 1100px) { 
+        .card{
+            width:9rem;
+            height:14rem;
+            margin-right:0.1em ;
+        }
+        .left{
+            display: block!important;
+        }
+        
+    }
+    @media screen and (min-width: 1300px) { 
+        .card{
+            width:13rem;
+            height:17rem;
+            
+        }
+        .left{
+            display: block!important;
+        }
+        
+    }
+    @media screen and (max-width: 710px) { 
+        .card{
+            width:9rem;
+            height:12rem;
+            margin-left:3em ;
+            margin-right:2em;
+        }
+        
+    }
+
+    @media screen and (max-width: 576px){
+        .card{
+            width:13rem;
+            height:12rem;
+            margin-left:8em ;
+            margin-right:2em;
+        }
+    }
+
+    @media screen and (min-width :870px ){
+        .left{
+            display: block!important;
+        }
+        .cancle-tag{
+            display:none!important;
+        }
+    }
+
+
+
+</style>
+</head>
+<body id="Body">
+
+
+<div class="Navigation">
+    <div class="logo-div">
+        <img src="{% static 'logo2.png' %}" alt="" class="logo " id="logo">
+        <p><img src="{% static 'icons/menu.png'%}" class="menu-img" id="nav-bar"></img></p>
+    </div>  
+
+    <div class="icon">
+        <!-- <i class="bx bxs-log-out">Click me </i> -->
+        <b><p>Settings</p></b>
+        <div class="logout">
+            <!-- <div class="logout-icon"> 
+                <i class="nav-icon bx bxs-log-out"></i>
+                <p>Logout</p>
+            </div> -->
+            <a href="{% url 'Logged_Out' %}"><b><p>Logout</p></b></a>
+        </div>
+    </div>
+
+
+
+</div>  <!--End OF Navigation Code  -->
+
+<div class="content">
+
+
+    <div class="left" id="left">
+      
+              
+        <img src="{% static 'icons/close.png'%}" class="cancle-tag " id="cancle-tag">
+
+        
+        <div class="profile">
+            <img src="{% static 'img-3.jpg' %}"  class="studentpicture" alt="">
+        </div>
+        <div class="name">
+        <h4>Yabatech Exam Officer</h4>
+        </div>
+        <div class="notactive">
+            <a href="{% url 'Admin_Page' %}"><b><h5 class=""> <i class="bx bxs-dashboard"> </i>Dashboard</h5></b></a>
+        </div>
+        <div class="notactive"> 
+             <a href="{% url 'AdminExamInfo' %}"><b><h5 class=""><i class="bx bxs-message-rounded"> </i>Examination Update</h5></b></a>
+        </div>
+        <div class="notactive"> 
+            <a href="{% url 'UploadCourse' %}"><b><h5 class=""><i class="bx bxs-message-square-detail"> </i>Department Course Data</h5></b></a>
+        </div>
+        <div class="notactive"> 
+             <a href="{% url 'StudentRegistration' %}"><b><h5 class=""><i class="bx bxs-registered"> </i>Student Registration</h5></b></a>
+        </div>
+        <div class="active-link"> 
+             <b><h5 class=""><i class="bx bxs-spreadsheet"> </i> Profile</h5></b>
+        </div>
+        <div class="notactive"> 
+             <a href="{% url 'Logged_Out' %}"><b><h5 class=""><i class="bx bxs-log-out"> </i> Logout</h5></b></a>
+        </div>
+        <div class="notactive"> 
+             <b><h5 class="">*********</h5></b>
+        </div>
+        <div class="notactive"> 
+             <b><h5 class=""><i class="bx bxs-log-out"> </i>*********</h5></b>
+        </div>
+      
+    
+    
+
+
+    </div>
+    <!-- End OF the Left Div -->
+    <div class="block-content" id="right"> 
+        <div class="card-info">
+            <div class="card-name">
+                <h2>My Informations</h2>
+            </div>
+            <hr>
+            <ul>
+                <li>
+                  
+                     <h3>Title : Yabatech Exam Officer</h3>
+                
+                </li>
+                <li>
+                  
+                    <h3>Role :   Admin</h3>
+               
+               </li>
+            
+              <li>
+                  
+                <h3>School:   Yabatech </h3>
+             
+              </li>
+            </ul>
+            <div class="back-button">
+                <a href="{% url 'Admin_Page' %}"><button><b><i class="bx bxs-left-arrow-alt"></i>        Back</b></button></a>
+              </div>
+
+           
+            
+
+
+
+        </div>
+
+   
+           
+            <!-- this is the exam card ending div tag -->
+
+     
+    </div>
+
+</div>
+
+<script>
+    
+    $(document).ready(function(){
+        $("#nav-bar").click(function(){ 
+         
+            $("#nav-bar").addClass("d-none")
+            $("#nav-bar").css("display","none")
+            setTimeout(()=>{
+                $("#left").slideDown()
+                $("#left").css("display","block")
+                $("#nav-bar").css("display","none")
+                $("#cancle-tag").css("visibility","visible")
+                
+                
+            },9)
+            
+        })
+        $("#cancle-tag").click(()=>{
+            $("#left").slideToggle()
+            setTimeout(()=>{
+                $("#left").css("display","none") 
+            },1000)
+        })
+
+        $("#Username").focus(function(){
+            $("#UsernameLabel").removeClass("d-0")
+            $("#Username").removeAttr("placeholder")
+        })
+      
+        $("#Username").focusout(function(){
+            if($("#Username").val() == ""){
+                $("#Username").attr("placeholder","Username*")
+                $("#UsernameLabel").addClass("d-0")
+            }
+            
+        })
+        /*$("#card").click(()=>{
+            alert($(window).width())
+        })*/
+        
+    })
+    
+</script>
+</body>
+</html>

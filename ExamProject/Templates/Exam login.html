@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'Css/Furnish.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Login</title>
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* Color of the school project
+        #008D3D =green
+        #f0bd00 = yellow*/
+        @media screen and  (max-width: 700px){
+            .logo-text h2{
+                font-size: large!important; 
+                
+            }
+              
+            
+            .leftdiv{
+                display: none!important; 
+            }
+            .rightdiv{
+                margin-left: 5%!important;
+                margin-right: 15%!important;
+                width:100%!important;
+            }
+            .right-logo{
+                visibility: visible!important;
+            }
+            
+        }
+
+        /* End Of Responsiveness*/
+          
+        .leftdiv{
+            width:25%;
+            margin-left: 0%;
+            border-radius:0.8em;
+            display:block;
+            margin-top: 0.4em;
+            margin-left:0.5em;
+            height:100%;
+            position:fixed;
+            background-color: white;
+        }
+        .logo-img{
+            width:80px;
+            height:80px;
+            display: flex;
+            margin-left:0.9em;
+            padding-top:7%;
+         
+        }
+        .bg-white{
+            background-color: #eeeeee;
+        }
+        .logo-text{
+            color:black;
+            
+        }
+        .logo-text h2{
+            margin-left: 0.9em;
+            margin-top: 5em;
+        
+            
+        }
+        .rightdiv{
+            display: block;
+            height:100%!important;
+            margin-left:50%;
+            
+            margin-bottom: 0%;
+           
+            position:fixed;
+            width:40%;
+           
+        }
+        .rightdiv h2{
+            color:#116711;
+            font-size: x-large;
+        }
+        .details{
+           margin-top: 0%;
+        }
+        .rightdiv form input{
+            height:3em;
+            background-color: #eeeeee;
+            border:1px solid #7e7e7e;
+            border-radius: 0.4rem;
+            margin-bottom: 2em;
+            width:100%;
+            color:black;
+            padding-left:0.7rem;
+          
+        }
+        .rightdiv form input:hover{
+           border:1px solid black;
+           
+        }
+        .rightdiv form input:focus{
+            border:2px solid black;
+        }
+
+        /*JUSTFOR FUN CODE*/
+        .placeholder label{
+         position:relative;
+         color:black;
+         bottom:5.1rem;
+         left: 0.7rem;
+         background-color:  #eeeeee;
+         
+         
+         
+         
+         
+         
+        }
+        .right-logo{
+            width:80px;
+            height:80px;
+            display: flex;
+           
+            margin-right:0.9rem;
+            position: relative;
+            margin-top:7%;
+            border-radius: 50%;
+           
+            margin-bottom:8em;
+            visibility: hidden;
+
+        }
+        
+        .placeholder{
+            width:80%;
+            height: 3em;
+            margin-bottom: 2em;
+           
+          
+        }
+       
+        /*End*/
+        .rightdiv form input[type="submit"]{
+            height:3em;
+            background-color: #bb973c;
+            border:1px solid #bb973c ;
+            border-radius: 0.4rem;
+            margin-bottom: 2em;
+            width:83%;
+            color:white;
+            
+            
+        }
+        .rightdiv form input[type="button"]:hover{
+            background-color: #9e7a1f
+        }
+        .wrong-password{
+            color:red;
+            display: block;
+            font-size:smaller;
+            padding: 0%;
+            position:relative;
+            top: 1em;
+            max-height: fit-content;
+           
+        }
+        .v-0{
+            visibility: hidden;
+        }
+       .d-0{
+        display: none;
+       }
+       .d-flex{
+        display: flex!important;
+       }
+
+
+    </style>
+</head>
+<body class="bg-white" id="Body">
+    <div class="">
+
+        <div class=""> 
+            
+                <div class="leftdiv ">
+
+                    <div class="">
+                        <img src="{% static 'logo1.png' %}" class="logo-img d-block" >
+                    </div>
+
+                     <div class=" logo-text  ">
+                        <h2>Yaba Tech Exam Management</h2>
+                    </div>
+                    <div class="logo-text  ">
+                        <h2>Hi, Welcome Back</h2>
+                    </div>
+ 
+              
+                
+                 
+                 </div>
+
+
+
+        </div>
+        <!----This Is The End Of The Left Div Container Fluid--->
+
+        <div class=""> 
+           
+            <div class="rightdiv"> 
+            <div class="">
+                <img src="{% static 'logo2.png' %}" class="right-logo ">
+            </div>
+                <h2>Sign In To Your Dashboard</h2>
+                <div class="details">
+                  <p>Enter your details below</p>  
+                </div>
+               
+                
+               
+                <form action="{% url 'ExamLogin' %}" method="post">
+
+                    {% csrf_token%}
+                    <p id="wrong-password" class="wrong-password {{dflex}}">Wrong Username Or Password</p>
+                    <div class="placeholder">
+                      <input type="text" placeholder="Username*"  id="Username" name="username" >
+                      <label id="UsernameLabel" class="d-0"> Username*</label>
+                    </div>
+                    <div class="placeholder">
+                      <input type="password"  placeholder="Enter Password*" name="password" id="Password">  
+                      <label for="" id="PasswordLabel" class="d-0" required> Enter Password*</label>
+                    </div>
+                    
+                    <input type="submit" value="Sign In">  
+                </form>
+                
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+        <!--This Is The End Of The Right Div Container Fluid-->
+    </div>
+      
+   
+</body>
+
+<script>
+    $(document).ready(function(){
+    $("#Username").focus(function(){
+        $("#UsernameLabel").removeClass("d-0")
+        $("#Username").removeAttr("placeholder") 
+        $("#wrong-password").removeClass("d-flex")
+        $("#wrong-password").addClass("v-0")
+    })
+  
+    $("#Username").focusout(function(){
+        if($("#Username").val() == ""){
+            $("#Username").attr("placeholder","Username*")
+            $("#UsernameLabel").addClass("d-0")
+            
+        }
+       
+    })
+    
+    $("#Password").focus(function(){
+        $("#PasswordLabel").removeClass("d-0")
+        $("#Password").removeAttr("placeholder")
+    })
+  
+    $("#Password").focusout(function(){
+        if($("#Password").val() == ""){
+            $("#Password").attr("placeholder","Enter Password*")
+            $("#PasswordLabel").addClass("d-0")
+        }
+        
+    })
+
+       
+    })
+</script>
+</html>

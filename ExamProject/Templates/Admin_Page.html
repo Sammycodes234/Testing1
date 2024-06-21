@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/Furnish.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Dashboard</title>
+    <style>
+         /* Color of the school project
+        #008D3D =green
+        #f0bd00 = yellow*/
+        *{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            background-color: white;
+        }
+        
+        /*Display Styles*/
+        .d-flex{
+            display: flex!important;
+        }
+        .d-none{
+            display:none!important;
+        }
+        .d-block{
+            display: block!important;
+        }
+
+        .Navigation{
+          max-width:100%;
+          max-height:4em;
+          position: sticky;
+          display:flex;
+          background-color: #116711;;
+          padding-left: 2%;
+          padding-right: 2%;
+          padding-top: 1em;
+          top: 0;
+          border-top-right-radius: 7px;
+          border-top-left-radius:7px;
+          z-index: 4;
+         
+         
+        }
+      
+        .icon{
+            margin-left : auto;
+            position: relative;
+            display: inline-block;
+            color:white;
+            width:5rem;
+            
+        }
+        .icon b p{
+            color: white;
+            margin-left: 2em;
+        }
+        
+        
+        .logo-div{
+           
+           display: flex;
+        }
+        .nav-icon{
+           color:white;
+            font-size: xx-large;
+        }
+        .d-none{
+            display: none!important;
+        }
+       
+        .logo{
+            height:3em;
+            width:3em;
+        }
+        /*.logout-icon{
+            background-color: #f0bd00;
+            height:2em;
+            display: flex;
+        }*/
+        .logout{
+            display: none;
+            position:absolute;
+            width:7.6em;
+            height:3em;
+            background-color: #116711; 
+            color:white;
+            border-bottom-left-radius:7px ;
+            border-bottom-right-radius:7px ;
+           
+           
+        }
+        .logout i{
+            color:red;
+           font-size: x-large;
+           
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        }
+        .logout i p{
+            display: flex;
+        }
+        .icon:hover .logout{
+            display: block;
+                
+            }
+        
+
+            /*End Of Navigation Styling Code*/
+        .left{
+            display: block;
+            max-width:15rem;
+            max-height:100%;
+            background-color: #116711;;
+            scroll-behavior: smooth;
+            overflow-y: scroll!important;
+            overflow-x: hidden;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 3em;
+            
+            position:fixed;
+            bottom: 0;
+            top:5em;
+            z-index:4;
+           
+            
+        }    
+      
+        a{
+            text-decoration: none;
+            color:white;
+        }
+        .left  .profile .studentpicture{
+            padding-left: 2rem;
+            padding-right: 2rem;
+
+        }
+        .menu-img{
+            width: 1.4rem;
+            display: none;
+         }
+        .left:not(.cancle-tag){
+            padding-top: 3em;
+        }
+
+
+        .left .cancle-tag{
+          margin-left: auto;
+          display: flex;
+          width: 1rem;
+          position: absolute;
+          top: .9em;
+          right: .4em;
+          visibility: hidden;
+        
+
+        }
+        .left::-webkit-scrollbar{
+            background-color: #116711;
+            width:0.5rem;
+            height: 0.5rem;
+            
+           
+            
+        }
+        .left::-webkit-scrollbar-track{
+             margin-block-start:.6em;
+             height:3em;
+        }
+        .left::-webkit-scrollbar-thumb{
+         background-color:white;
+         height: 2%!important;
+         width: 2px;
+         border-radius: 2px;
+         border-top-right-radius: 0%;
+         scrollbar-width: 2px;
+         margin-block-start: 10px;
+
+        }
+        .left::-webkit-scrollbar-thumb:hover{
+            background-color: #f0bd00;
+        }
+     
+       .studentpicture{
+            width:10em;
+            height:10em;
+            margin-left:  auto;
+            margin-right: auto;
+           
+        }
+        .name{
+            color:white
+        }
+        .active-link{
+           width:100%;
+           height:2em;
+           background-color: green;
+           color:rgb(253, 212, 5);
+           border-radius: 0.2em;
+           margin-bottom: 1em;
+           padding-left:1rem;
+        }
+        .notactive{
+            width:100%;
+            height:2em;
+            
+            color:white;
+            border-radius: 0.2em;
+            padding-left:1rem;
+            transition-duration: .6s;
+        }
+        .notactive:hover{
+            background-color: green;
+            padding-left: 2rem;
+        }
+        /* End OF the Left Div Code*/
+        .block-content{
+            margin-left: 18rem; 
+            display: block;
+        }
+        .content{
+           display: flex;
+        }
+        .card-content{
+            display: flex;
+            flex-wrap: wrap;
+            width:100%;
+            
+          
+            margin-top: 1rem;
+        }
+        .card{
+            display:block;
+            width:13rem;
+            height:17rem;
+            background-color:  transparent;
+            border:.4em solid  transparent;
+            padding:1rem;
+            color:white;
+            border-radius: 5px;
+            margin-bottom: 1rem ;
+            margin-left: 4rem;
+            margin-right: 1rem;
+            transition-duration: .3s;
+        }
+        .card:hover {
+            margin-top: 1em;
+
+        }
+        .card-img-src{
+            width:100%;
+            height:10rem;
+            
+
+        }
+        .card-img{
+          height:20%;
+          display: flex;
+          justify-content: center;
+        }
+        
+        .card-title{
+
+            width:100%;
+            height:50%;
+            color:rgb(253, 212, 5);
+            display: flex;
+            justify-content: center;
+        }
+        .card-details{
+            
+            display: none!important;
+            padding-top: 1rem;
+           
+            width:100%;
+            height:40%;
+            
+            color:rgb(43, 42, 42);
+            display: flex;
+            justify-content: center;
+            align-content: center;
+           
+        }
+        .card-button{
+            position:relative;
+            bottom:0;
+            height:20%;
+            
+            display: flex;
+            justify-content: center;
+           
+           
+
+        }
+        .button{
+            position: absolute;
+            bottom:0;
+            width:4rem;
+            height:2rem;
+            background-color: #116711;
+            color:white;
+            border-radius:7px;
+            display: flex;
+            justify-content: center;
+            
+           
+        }
+        .card:hover{
+           box-shadow: 2px 2px 10px #f0bd00;
+        }
+        .button:hover{
+            box-shadow: 2px 2px  green;
+        }
+        .bxs-log-out{
+            color:red;
+            
+        }
+        /* Resposiveness Code*/
+        @media screen and (max-width: 990px) { 
+            .card{
+                width:10rem;
+                height:14rem;
+            }
+            .logout{
+                width:6.95em;
+            }
+            
+            
+        }
+        @media screen and (max-width: 870px) { 
+            .card{
+                width:13rem;
+                height:17rem;
+            }
+            .left{
+                display: none;
+              
+            }
+            .logo{
+                display: none;
+            }
+            .menu-img{
+                display: flex!important;
+            }
+            .cancle-tag{
+                display: flex!important;
+            }
+            .block-content{
+                margin:1rem;
+            }
+            .logout{
+                width:6.75em;
+            }
+            
+        }
+       
+
+        @media screen and (min-width: 1100px) { 
+            .card{
+                width:9rem;
+                height:14rem;
+                margin-right:0.1em ;
+            }
+            .left{
+                display: block!important;
+            }
+            
+        }
+        @media screen and (min-width: 1300px) { 
+            .card{
+                width:13rem;
+                height:17rem;
+                
+            }
+            .left{
+                display: block!important;
+            }
+            
+        }
+        @media screen and (max-width: 710px) { 
+            .card{
+                width:9rem;
+                height:12rem;
+                margin-left:3em ;
+                margin-right:2em;
+            }
+            
+        }
+
+        @media screen and (max-width: 576px){
+            .card{
+                width:13rem;
+                height:12rem;
+                margin-left:8em ;
+                margin-right:2em;
+            }
+        }
+
+        @media screen and (min-width :870px ){
+            .left{
+                display: block!important;
+            }
+            .cancle-tag{
+                display:none!important;
+            }
+        }
+
+ 
+
+    </style>
+</head>
+<body id="Body">
+
+
+    <div class="Navigation">
+        <div class="logo-div">
+            <img src="{% static 'logo2.png' %}" alt="" class="logo " id="logo">
+            <p><img src="{% static 'icons/menu.png'%}" class="menu-img" id="nav-bar"></img></p>
+        </div>  
+
+        <div class="icon">
+            <!-- <i class="bx bxs-log-out">Click me </i> -->
+            <b><p>Settings</p></b>
+            <div class="logout">
+                <!-- <div class="logout-icon"> 
+                    <i class="nav-icon bx bxs-log-out"></i>
+                    <p>Logout</p>
+                </div> -->
+                <a href="{% url 'Logged_Out' %}"><b><p>Logout</p></b></a>
+            </div>
+        </div>
+
+
+
+    </div>  <!--End OF Navigation Code  -->
+
+   <div class="content">
+
+   
+        <div class="left" id="left">
+          
+                  
+            <img src="{% static 'icons/close.png'%}" class="cancle-tag " id="cancle-tag">
+
+            
+            <div class="profile">
+                <img src="{% static 'img-3.jpg' %}"  class="studentpicture" alt="">
+            </div>
+            <div class="name">
+            <h4>Yabatech Exam Officer</h4>
+            </div>
+            <div class="active-link">
+                <b><h5 class=""> <i class="bx bxs-dashboard"> </i> Dashboard</h5></b>
+            </div>
+            <div class="notactive"> 
+                <a href="{% url 'AdminExamInfo' %}"> <b><h5 class=""><i class="bx bxs-message-rounded"> </i> Examination Update</h5></b></a>
+            </div>
+            <div class="notactive"> 
+                <a href="{% url 'UploadCourse' %}"><b><h5 class=""><i class="bx bxs-message-square-detail"> </i> Departmental Course Data </h5></b></a>
+            </div>
+            <div class="notactive"> 
+                 <a href="{% url 'StudentRegistration' %}"><b><h5><i class="bx bxs-registered"> </i> Student Registration</h5></b></a>
+            </div>
+            <div class="notactive"> 
+                 <a href="{% url 'AdminProfile' %}"><b><h5 class=""><i class="bx bxs-spreadsheet"> </i> Profile</h5></b></a>
+            </div>
+            <div class="notactive"> 
+                 <a href="{% url 'Logged_Out' %}"><b><h5 class=""><i class="bx bxs-log-out"> </i> Logout</h5></b></a>
+            </div>
+            <div class="notactive"> 
+                <b><h5 class="">******</h5></b>
+            </div>
+            <div class="notactive"> 
+                 <b><h5 class="">******</h5></b>
+            </div>
+        
+        
+        
+
+
+        </div>
+        <!-- End OF the Left Div -->
+        <div class="block-content" id="right"> 
+
+       
+            <div class="card-content">
+                <a href="{% url 'StudentRegistration' %}">
+                <div class="card" id="card">
+                    <div class="card-img">  
+                        <img src="{% static 'Exam Image/Student Registration.webp' %}" class="card-img-src" alt="">
+                    </div>
+                    <div class="card-title">
+                        <h4>Student Registration </h4>
+                    </div>
+                    <div class="card-details">
+                        <h5>Supply Student Info to give access to account</h5>
+                    </div>
+                    <div class="card-button">   
+                        <div class="button">
+                            View
+                        </div>
+                    </div>
+                </a>
+                </div>
+
+                <div class="card">
+                    <a href="{% url 'UploadCourse' %}">
+                    <div class="card-img">  
+                        <img src="{% static 'Exam Image/Course1.webp' %}" class="card-img-src" alt="">
+                    </div>
+                    <div class="card-title">
+                        <h4>Course Registration Data</h4>
+                    </div>
+                    <div class="card-details">
+                        <h5>Register Your Course  In a blink of an eye</h5>
+                    </div>
+                    <div class="card-button">   
+                        <div class="button">
+                            View
+                        </div>
+                    </div>
+                </a>
+                </div>
+                
+
+                <div class="card">
+                    <a href="{% url 'AdminExamInfo' %}">
+                    <div class="card-img">  
+                        <img src="{% static 'Exam Image/Exam Update1.webp' %}" class="card-img-src" alt="">
+                    </div>
+                    <div class="card-title">
+                        <h4>Examination Update</h4>
+                    </div>
+                    <div class="card-details">
+                        <h5>Register Your Course  In a blink of an eye</h5>
+                    </div>
+                    <div class="card-button">   
+                        <div class="button">
+                            View
+                        </div>
+                    </div></a>
+                </div>
+
+               
+               
+            </div>     
+                <!-- this is the card ending div tag -->
+
+         
+        </div>
+
+    </div>
+
+    <script>
+        
+        $(document).ready(function(){
+            $("#nav-bar").click(function(){ 
+             
+                $("#nav-bar").addClass("d-none")
+                $("#nav-bar").css("display","none")
+                
+                setTimeout(()=>{
+                    $("#left").slideDown()
+                    $("#left").css("display","block")
+                    $("#nav-bar").css("display","none")
+                    $("#cancle-tag").css("visibility","visible")
+                    
+                   
+                    
+                },9)
+                
+            })
+            $("#cancle-tag").click(()=>{
+                $("#left").slideToggle()
+                setTimeout(()=>{
+                    $("#left").css("display","none") 
+                },1000)
+            })
+            /*$("#card").click(()=>{
+                alert($(window).width())
+            })*/
+            
+        })
+        
+    </script>
+</body>
+</html>
